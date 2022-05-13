@@ -1,0 +1,114 @@
+TOY PROBLEM/water jug
+Rule	State	Process
+
+
+1	
+
+(X,Y | X<4)	
+(4,Y)
+{Fill 4-gallon jug}
+
+2	
+(X,Y |Y<3)	
+(X,3)
+{Fill 3-gallon jug}
+
+
+3	
+
+(X,Y |X>0)	
+(0,Y)
+{Empty 4-gallon jug}
+
+4	
+(X,Y | Y>0)	
+(X,0)
+{Empty 3-gallon jug}
+
+5	
+(X,Y | X+Y>=4 ^ Y>0)	(4,Y-(4-X))
+{Pour water from 3-gallon jug into 4-gallon jug until 4-gallon jug is full}
+
+6	
+(X,Y | X+Y>=3
+^X>0)	(X-(3-Y),3)
+{Pour water from 4-gallon jug into 3-gallon jug until 3-gallon jug is full}
+
+7	
+(X,Y | X+Y<=4
+^Y>0)	
+(X+Y,0)
+{Pour all water from 3-gallon jug into 4-gallon jug}
+
+8	(X,Y | X+Y <=3^ X>0)	(0,X+Y)
+{Pour all water from 4-gallon jug into 3-gallon jug}
+
+9	
+(0,2)	
+(2,0)
+{Pour 2 gallon water from 3 gallon jug into 4 gallon jug}
+
+Constrain statisfication / n-queen
+
+while there are untried configurations
+{
+generate the next configuration
+if queens don't attack in this configuration then
+{
+print this configuration;
+}
+}
+
+BFS DFS
+
+1.	Create a node list (Queue) that initially contains the first node N and mark it as visited.
+2.	Visit the adjacent unvisited vertex of N and insert it in a queue.
+3.	If there are no remaining adjacent vertices left, remove the first vertex from the queue mark it as visited, display it.
+4.	Repeat step 1 and step 2 until the queue is empty or the desired node is found.
+
+best first and A*
+
+Best First Search-
+Step 1: Place the starting node into the OPEN list.
+Step 2: If the OPEN list is empty, Stop and return failure.
+Step 3: Remove the node n, from the OPEN list which has the lowest value of h(n), and places it in the CLOSED list.
+If node n is goal then return else
+Step 4: Expand the node n, and generate and check the successors of node n. and find whether any node is a goal node or not. If any successor node is goal node, then return success and terminate the search, else proceed to Step 5.
+Step 5: For each successor node, algorithm checks for evaluation function f(n), and then check if the node has been in either OPEN or CLOSED list. If the node has not been in both list, then add it to the OPEN list.
+Step 6: Return to Step 2.
+2. A*-
+Step1: Place the starting node in the OPEN list.
+Step 2: Check if the OPEN list is empty or not, if the list is empty then return failure and stops.
+Step 3: Select the node from the OPEN list which has the smallest value of evaluation function (g+h), if node n is goal node then return success and stop, otherwise
+Step 4:Expand node n and generate all of its successors, and put n into the closed list. For each successor n', check whether n' is already in the OPEN or CLOSED list, if not then compute evaluation function for n' and place into Open list.
+Step 5: Else if node n' is already in OPEN and CLOSED, then it should be attached to the back pointer which reflects the lowest g(n') value.
+Step 6: Return to Step 2.
+
+min-max
+
+function minimax(node, depth, Player)
+1.	if depth ==0 or node is a terminal node then return value(node)
+2.	If Player =‘Max’	// for Maximizer Player
+set α = -∞	//worst case value for MAX
+for each child of node do
+value= minimax(child, depth-1, ’MIN’)
+α= max(α, Value)	//gives Maximum of the values return (α)
+else	// for Minimizer player
+set  α = +∞	//worst case value for MIN
+for each child of node do
+value= minimax(child, depth-1, ’MAX’)
+α = min(α, Value)	//gives minimum of the values return (α)
+
+uncertain method of an application
+
+probability of occurence = number of desired outcomes/total number of outcomes
+
+block world problem
+1.	MOVE(B,A)- To lift block from B to A.
+2.	ON(B,A)- To place block B on A.
+3.	CLEAR(B)- To lift block B from the table.
+4.	PLACE(B)- To put the block B on table.
+
+
+
+
